@@ -57,45 +57,95 @@ using namespace std;
 //	ustd2.WhoAreYou();
 //}
 
-class Car {
+//class Car {
+//private:
+//	int gasolineGauge;
+//public:
+//	Car(int mygas) : gasolineGauge(mygas) {}
+//	int GetGasGauge()
+//	{
+//		return gasolineGauge;
+//	}
+//};
+//
+//class HybridCar : public Car { // 하이브리드 자동차
+//private:
+//	int electricGauge;
+//public:
+//	HybridCar(int myeletric, int mygas) : electricGauge(myeletric), Car(mygas) {}
+//	int GetElecGauge()
+//	{
+//		return electricGauge;
+//	}
+//};
+//
+//class HybirdWaterCar : public HybridCar {
+//private:
+//	int waterGauge;
+//public:
+//	HybirdWaterCar(int mygas, int myelect, int mywater) : HybridCar(myelect, mygas), waterGauge(mywater) {}
+//	void ShowCurrentGauge()
+//	{
+//		cout << "잔여 가솔린: " << GetGasGauge() << endl;
+//		cout << "잔여 전기량: " << GetElecGauge() << endl;
+//		cout << "잔여 워터랑: " << waterGauge << endl;
+//	}
+//};
+//
+//
+//int main()
+//{
+//	HybirdWaterCar hbwc(30, 45, 60);
+//	hbwc.ShowCurrentGauge();
+//}
+
+class MyFriendinfo {
 private:
-	int gasolineGauge;
+	char * name;
+	int age;
 public:
-	Car(int mygas) : gasolineGauge(mygas) {}
-	int GetGasGauge()
+	MyFriendinfo(int myage, char * myname) : age(myage) {
+		name = new char[strlen(myname) + 1];
+		strcpy_s(name, strlen(myname) + 1, myname);
+	}
+	~MyFriendinfo()
 	{
-		return gasolineGauge;
+		delete[]name;
+	}
+	void ShowMyFriendInfo()
+	{
+		cout << "이름: " << name << endl;
+		cout << "나이: " << age << endl;
 	}
 };
 
-class HybridCar : public Car { // 하이브리드 자동차
+class MyFriendDetailInfo : public MyFriendinfo {
 private:
-	int electricGauge;
+	char * addr;
+	char * phone;
 public:
-	HybridCar(int myeletric, int mygas) : electricGauge(myeletric), Car(mygas) {}
-	int GetElecGauge()
+	MyFriendDetailInfo(char * myname, int myage, char* myaddr, char* myphone) : MyFriendinfo(myage, myname)
 	{
-		return electricGauge;
+		addr = new char[strlen(myaddr) + 1];
+		strcpy_s(addr, strlen(myaddr) + 1, myaddr);
+		phone = new char[strlen(myphone) + 1];
+		strcpy_s(phone, strlen(myphone) + 1, myphone);
+
+	}
+	~MyFriendDetailInfo()
+	{
+		delete[]addr, phone;
+	}
+	void ShowMyFriendDetailInfo()
+	{
+		ShowMyFriendInfo();
+		cout << "주소: " << addr << endl;
+		cout << "전화: " << phone << endl;
 	}
 };
-
-class HybirdWaterCar : public HybridCar {
-private:
-	int waterGauge;
-public:
-	HybirdWaterCar(int mygas, int myelect, int mywater) : HybridCar(myelect, mygas), waterGauge(mywater) {}
-	void ShowCurrentGauge()
-	{
-		cout << "잔여 가솔린: " << GetGasGauge() << endl;
-		cout << "잔여 전기량: " << GetElecGauge() << endl;
-		cout << "잔여 워터랑: " << waterGauge << endl;
-	}
-};
-
 
 int main()
 {
-	HybirdWaterCar hbwc(30, 45, 60);
-	hbwc.ShowCurrentGauge();
+	MyFriendDetailInfo frd("조정운", 23, "전북 정읍시", "010-5763-0427");
+	frd.ShowMyFriendDetailInfo();
 }
-
