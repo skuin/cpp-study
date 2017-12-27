@@ -39,5 +39,14 @@
     <ClCompile Include="171218상속 문법.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
+    <ClCompile Include="171219 상속.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Banking_System\171221 상속과다형성.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="171226 가상함수,가상소멸자.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
   </ItemGroup>
 </Project>
